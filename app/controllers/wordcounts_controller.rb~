@@ -1,0 +1,83 @@
+class WordcountsController < ApplicationController
+  # GET /wordcounts
+  # GET /wordcounts.xml
+  def index
+    @wordcounts = Wordcount.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @wordcounts }
+    end
+  end
+
+  # GET /wordcounts/1
+  # GET /wordcounts/1.xml
+  def show
+    @wordcount = Wordcount.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @wordcount }
+    end
+  end
+
+  # GET /wordcounts/new
+  # GET /wordcounts/new.xml
+  def new
+    @wordcount = Wordcount.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @wordcount }
+    end
+  end
+
+  # GET /wordcounts/1/edit
+  def edit
+    @wordcount = Wordcount.find(params[:id])
+  end
+
+  # POST /wordcounts
+  # POST /wordcounts.xml
+  def create
+    @wordcount = Wordcount.new(params[:wordcount])
+
+    respond_to do |format|
+      if @wordcount.save
+        format.html { redirect_to(@wordcount, :notice => 'Wordcount was successfully created.') }
+        format.xml  { render :xml => @wordcount, :status => :created, :location => @wordcount }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @wordcount.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /wordcounts/1
+  # PUT /wordcounts/1.xml
+  def update
+    @wordcount = Wordcount.find(params[:id])
+
+    respond_to do |format|
+      if @wordcount.update_attributes(params[:wordcount])
+        format.html { redirect_to(@wordcount, :notice => 'Wordcount was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @wordcount.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /wordcounts/1
+  # DELETE /wordcounts/1.xml
+  def destroy
+    @wordcount = Wordcount.find(params[:id])
+    @wordcount.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(wordcounts_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

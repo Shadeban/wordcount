@@ -1,0 +1,14 @@
+<p>
+  <b>Url:</b>
+  <%=h @webpage.url %>
+  <b>test</b>
+  <ol> 
+	  <% @webpage.wordcount.each do |word| %>
+		  <li><%= "#{word[0]} - #{word[1]}" %>
+	  <% end %>	  
+  </ol>
+</p>
+
+
+<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
+<%= link_to 'Back', webpages_path %>
