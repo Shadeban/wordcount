@@ -25,16 +25,6 @@ class WebpagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => webpages(:one).to_param
-    assert_response :success
-  end
-
-  test "should update webpage" do
-    put :update, :id => webpages(:one).to_param, :webpage => { }
-    assert_redirected_to webpage_path(assigns(:webpage))
-  end
-
   test "should destroy webpage" do
     assert_difference('Webpage.count', -1) do
       delete :destroy, :id => webpages(:one).to_param
