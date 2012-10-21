@@ -51,7 +51,7 @@ class WebpagesController < ApplicationController
     
     respond_to do |format|
       if http_connector.errors.empty? && @webpage.save 
-        format.html { redirect_to(@webpage, :notice => 'Webpage was successfully created.') }
+        format.html { redirect_to(@webpage,  'Successfully counted the words.') }
         format.xml  { render :xml => @webpage, :status => :created, :location => @webpage }
       else
         format.html { render :action => "new" }
@@ -59,23 +59,7 @@ class WebpagesController < ApplicationController
       end
     end
   end
-
-  # PUT /webpages/1
-  # PUT /webpages/1.xml
-  def update
-    @webpage = Webpage.find(params[:id])
-
-    respond_to do |format|
-      if @webpage.update_attributes(params[:webpage])
-        format.html { redirect_to(@webpage, :notice => 'Webpage was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @webpage.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
+  
   # DELETE /webpages/1
   # DELETE /webpages/1.xml
   def destroy
