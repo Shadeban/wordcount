@@ -1,20 +1,24 @@
-<h1>Listing webpages</h1>
+<h1>Webpage Word Count History</h1>
 
 <table>
   <tr>
-    <th>Url</th>
+    <th>URL</th>
+    <th>DATE</th>
+    <th>TOP WORD</th>
+				    
   </tr>
 
 <% @webpages.each do |webpage| %>
   <tr>
     <td><%=h webpage.url %></td>
-    <td><%= link_to 'Show', webpage %></td>
-    <td><%= link_to 'Edit', edit_webpage_path(webpage) %></td>
-    <td><%= link_to 'Destroy', webpage, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h webpage.created_at.strftime '%m/%d/%y' %></td> 
+    <td><%= "'#{webpage.word_count.first.first}'" %></td>
+    <td><%= link_to 'Show Top 10 Words', webpage %></td>
+    <td><%= link_to 'Remove', webpage, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New webpage', new_webpage_path %>
+<%= link_to 'Count more words', new_webpage_path %>

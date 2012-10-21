@@ -1,14 +1,13 @@
 <p>
-  <b>Url:</b>
+  <b>Top 10 Words for URL:</b>
   <%=h @webpage.url %>
-  <b>test</b>
   <ol> 
-	  <% @webpage.wordcount.each do |word| %>
-		  <li><%= "#{word[0]} - #{word[1]}" %>
+	  <% @webpage.word_count.each do |word| %>
+		  <li><%= "#{word[0]} - #{pluralize(word[1], 'time')}" %>
 	  <% end %>	  
   </ol>
 </p>
 
 
-<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
-<%= link_to 'Back', webpages_path %>
+<%= link_to 'Count more words', new_webpage_path %>
+<%= link_to 'History', webpages_path %>
