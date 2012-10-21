@@ -51,7 +51,7 @@ class WebpagesController < ApplicationController
     
     respond_to do |format|
       if http_connector.errors.empty? && @webpage.save 
-        format.html { redirect_to(@webpage,  'Successfully counted the words.') }
+        format.html { redirect_to(@webpage,  :status => 'Successfully counted the words.') }
         format.xml  { render :xml => @webpage, :status => :created, :location => @webpage }
       else
         format.html { render :action => "new" }
