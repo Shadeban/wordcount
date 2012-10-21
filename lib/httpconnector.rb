@@ -64,6 +64,9 @@ class HTTPConnector
 			end
 		rescue Errno::ECONNREFUSED => e
 			@errors << "couldn't access that URL: " + e 	
+		
+		rescue SocketError => e
+			@errors << "couldn't access that URL: " + e
 		end
 	end
 end
